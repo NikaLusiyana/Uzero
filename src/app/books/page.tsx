@@ -4,7 +4,14 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { PlusCircle, Pencil, Trash2, Book as BookIcon } from 'lucide-react'
-import type { Book } from '@prisma/client'
+
+type Book = {
+  id: number
+  name: string
+  author?: string | null
+  genre?: string | null
+  summary?: string | null
+}
 
 
 export default function BooksPage() {
