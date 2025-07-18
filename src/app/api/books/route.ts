@@ -1,3 +1,4 @@
+import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
 type Book = {
@@ -48,7 +49,13 @@ export async function DELETE(req: Request) {
     return new Response(JSON.stringify({ error: 'ID tidak ditemukan' }), { status: 400 })
   }
 
-  books = books.filter((book) => book.id !== id)
+  const numericId = Number(id)
+  if (isNaN(numericId)) {
+    return new Response(JSON.stringify({ error: 'ID tidak valid' }), { status: 400 })
+  }
+
+  books = books.filter((book) => book.id !== numericId)
 
   return new Response(JSON.stringify({ message: 'Buku dihapus' }), { status: 200 })
 }
+
