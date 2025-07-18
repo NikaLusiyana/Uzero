@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { PlusCircle, Pencil, Trash2, Book as BookIcon } from 'lucide-react'
-import { Book } from '@prisma/client'
+import type { Book } from '@prisma/client'
+
 
 export default function BooksPage() {
   const [books, setBooks] = useState<Book[]>([])
