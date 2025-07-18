@@ -8,7 +8,13 @@ export default function Home() {
     <main className="min-h-screen flex items-start justify-center bg-[var(--darker)] text-brand-light px-4 py-20">
       <div className="max-w-5xl text-center space-y-8">
         <div className="flex justify-center">
-          <img src="/logo.png" alt="Uzero Logo" className="w-48 h-48 mx-auto mb-4" />
+          <Image 
+            src="/logo.png" 
+            alt="Uzero Logo" 
+            width={192} 
+            height={192}
+            className="w-48 h-48 mx-auto mb-4" 
+          />
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold tracking-wide font-serif text-brand-light">
