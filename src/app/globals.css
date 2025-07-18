@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+  --background: #161616;         /* brand-light */
+  --foreground: #24262b;         /* brand-darker */
+  --brand-darker: #1E1E1E;
+  --brand-dark: #3c3e42;
+  --brand-light: #F3F1E7;
+  --brand-gold: #A97D39;
+  --brand-goldhover: #3A586E;
+  --brand-goldsoft: rgba(174, 131, 85, 0.8);
+  --brand-accent: #D4C1A3;
+  --brand-blue: #2c3a53;
+  --brand-white: #ffffff;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #161616;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+  font-family: var(--font-inter), sans-serif;
+}
