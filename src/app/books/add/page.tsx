@@ -41,7 +41,7 @@ export default function AddBookPage() {
   return (
     <main>
       <div>
-        <div className="flex items-center justify-between pb-16">
+        <div className="flex items-start justify-between pb-16">
           <h1 className="text-3xl font-sans font-bold tracking-wide flex items-center gap-2">
             <Book size={20} strokeWidth={2.2} />
             Tambah Buku Baru

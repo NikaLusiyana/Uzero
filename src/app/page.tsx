@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <main className="min-h-screen flex items-start justify-center bg-[var(--darker)] text-brand-light px-4 py-20">
-      <div className="max-w-5xl text-center space-y-8">
+      <div className="max-w-5xl text-center space-y-6">
         <div className="flex justify-center">
           <Image 
             src="/logo.png" 

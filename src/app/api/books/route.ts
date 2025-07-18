@@ -1,46 +1,54 @@
-//import { prisma } from '@/lib/prisma'
+// app/api/books/route.ts
+
+import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 
-type Book = {
-  id: number
-  name: string
-  author?: string
-  genre?: string
-  summary?: string
-  createdAt?: string
-}
-
-let books: Book[] = []
-
-// GET ALL BOOKS
+// ✅ GET ALL BOOKS
 export async function GET() {
+  const books = await prisma.book.findMany({
+    orderBy: { createdAt: 'desc' },
+  })
   return NextResponse.json(books)
 }
 
-// ADD NEW BOOK
+// ✅ ADD NEW BOOK
 export async function POST(req: Request) {
   const data = await req.json()
-  const newBook: Book = {
-    id: Date.now(),
-    ...data,
-    createdAt: new Date().toISOString(),
-  }
-  books.push(newBook)
+
+  const newBook = await prisma.book.create({
+    data: {
+      name: data.name,
+      author: data.author || null,
+      genre: data.genre || null,
+      summary: data.summary || null,
+    },
+  })
+
   return NextResponse.json(newBook, { status: 201 })
 }
 
-// UPDATE BOOK
+// ✅ UPDATE BOOK
 export async function PUT(req: Request) {
   const data = await req.json()
-  const index = books.findIndex((b) => b.id === data.id)
-  if (index === -1) {
-    return NextResponse.json({ error: 'Book not found' }, { status: 404 })
+
+  if (!data.id) {
+    return new Response(JSON.stringify({ error: 'ID diperlukan untuk update' }), { status: 400 })
   }
-  books[index] = { ...books[index], ...data }
-  return NextResponse.json(books[index])
+
+  const updatedBook = await prisma.book.update({
+    where: { id: Number(data.id) },
+    data: {
+      name: data.name,
+      author: data.author || null,
+      genre: data.genre || null,
+      summary: data.summary || null,
+    },
+  })
+
+  return NextResponse.json(updatedBook)
 }
 
-// DELETE BOOK
+// ✅ DELETE BOOK
 export async function DELETE(req: Request) {
   const { searchParams } = new URL(req.url)
   const id = searchParams.get('id')
@@ -54,8 +62,7 @@ export async function DELETE(req: Request) {
     return new Response(JSON.stringify({ error: 'ID tidak valid' }), { status: 400 })
   }
 
-  books = books.filter((book) => book.id !== numericId)
+  await prisma.book.delete({ where: { id: numericId } })
 
   return new Response(JSON.stringify({ message: 'Buku dihapus' }), { status: 200 })
 }
-
