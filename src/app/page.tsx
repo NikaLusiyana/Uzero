@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Book, ScrollText, Globe2, LibraryBig } from 'lucide-react'
 import ActionButton from '@/components/ActionButton'
+import Image from 'next/image'
 
 export default function Home() {
   return (
