@@ -19,4 +19,4 @@ Semua data disimpan langsung ke database PostgreSQL melalui Prisma.
 - Vercel (Deployment)
 
 ## 🌐 Live Preview
-👉 [https://uzero-companion.vercel.app](https://uzero-companion.vercel.app)
+👉 [https://uzero.vercel.app](https://uzero.vercel.app)
