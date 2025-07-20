@@ -5,24 +5,24 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-start justify-center bg-[var(--darker)] text-brand-light px-4 py-20">
-      <div className="max-w-5xl text-center space-y-6">
+    <main className="min-h-screen flex items-start justify-center bg-[var(--darker)] text-brand-light px-4 py-12">
+      <div className="max-w-4xl text-center space-y-4">
         <div className="flex justify-center">
           <Image 
             src="/logo.png" 
             alt="Uzero Logo" 
-            width={192} 
-            height={192}
-            className="w-48 h-48 mx-auto mb-4" 
+            width={128} 
+            height={128}
+            className="w-32 h-32 mx-auto mb-3" 
           />
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-wide font-serif text-brand-light">
+        <h1 className="text-3xl md:text-4xl font-bold tracking-wide font-serif text-brand-light">
           UZERO <br/>
           COMPANION
         </h1>
 
-        <p className="text-base text-[var(--brand-gold)] leading-relaxed font-serif italic space-y-2">
+        <p className="text-sm text-[var(--brand-gold)] leading-relaxed font-serif italic space-y-1">
           <span>Di dunia yang pernah diberkati lalu dikutuk,</span><br />
           <span>warisan tidak hanya berupa darah, tapi juga dosa.</span><br />
           <span>
@@ -39,9 +39,9 @@ export default function Home() {
           <Link href="/books/add">
             <ActionButton icon={<Book size={16} />}>Add Book</ActionButton>
           </Link>
-          <ActionButton icon={<ScrollText size={16} />}>Add Chapter</ActionButton>
-          <ActionButton icon={<Globe2 size={16} />}>Add Worldbuilding Details</ActionButton>
-          <ActionButton icon={<LibraryBig size={16} />}>Add Glossary</ActionButton>
+          <Link href="/chapters/add"><ActionButton icon={<ScrollText size={16} />}>Add Chapter</ActionButton></Link>
+          <Link href="/worldbuilding/add"><ActionButton icon={<Globe2 size={16} />}>Add Worldbuilding</ActionButton></Link>
+          <Link href="/glossary/add"><ActionButton icon={<LibraryBig size={16} />}>Add Glossary</ActionButton></Link>
         </div>
       </div>
     </main>
